@@ -62,7 +62,7 @@ io.on('connection', (socket) => {
     gameStates.set(playerData.room, {
       punnettPool: [...PUNNETT_POOL],
       currentQuestion: null,
-      timeLeft: 15,
+      timeLeft: 30,
       roundActive: false,
       playerHP: {
         [room.playerNames[0]]: 100,
@@ -176,7 +176,7 @@ io.on('connection', (socket) => {
     gameStates.set(roomCode, {
       punnettPool: [...PUNNETT_POOL],
       currentQuestion: null,
-      timeLeft: 16,
+      timeLeft: 30,
       roundActive: false,
       playerHP: {
         [room.playerNames[0]]: 100,
@@ -601,7 +601,7 @@ function nextQuestion(roomCode) {
   const randomIndex = Math.floor(Math.random() * gameState.punnettPool.length);
   const question = gameState.punnettPool.splice(randomIndex, 1)[0];
   gameState.currentQuestion = question;
-  gameState.timeLeft = 20;
+  gameState.timeLeft = 30;
   gameState.roundActive = true;
 
   io.to(roomCode).emit('next-question', question);
